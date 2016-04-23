@@ -9,11 +9,7 @@ buildscript {
     }
 }
 
-allprojects {
-    repositories {
-        mavenCentral()
-    }
-}
+
 
 
 
