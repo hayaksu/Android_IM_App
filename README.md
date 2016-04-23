@@ -1,13 +1,15 @@
-**Android Messaging Tutorial**
+**Android Instant Messaging application with spam detection**
 
-This is the starter skeleton project for our Android Messaging Tutorial - http://tutorial.sinch.com/android-messaging-tutorial/
+This is an Android IM app project following this Tutorial - https://www.sinch.com/tutorials/android-messaging-tutorial-using-sinch-and-parse/
 
-The tutorial will walk you throught building an instant messaging app using Sinch in less than two hours!
+The tutorial will walk you through building an instant messaging app using Sinch in less than two hours!
+
+We update the tutorial to include Arabic spam message detection.
 
 **Requirements**
 
 - Two Android devices (or emulators) for testing
 - Android Studio (download at https://developer.android.com/sdk/installing/studio.html)
+- Andoid API 19 
 - Some coding experience (preferably Java)
 
-Email us at [dev@sinch.com](mailto:dev@sinch.com) if you have any questions!
