@@ -1,4 +1,4 @@
-**Android Instant Messaging application with spam detection**
+**Android Instant Messaging application with Arabic spam detection**
 
 This is an Android IM app project following this Tutorial - https://www.sinch.com/tutorials/android-messaging-tutorial-using-sinch-and-parse/
 
