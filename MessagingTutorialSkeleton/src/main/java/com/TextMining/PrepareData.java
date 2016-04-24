@@ -12,7 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Sakurmi on 11/3/2015.
+ * Created by Marwa Khan on 25/3/2016.
+ * Class Description: This class is used to perform the following tasks 
+ * 1- Text tokanization to split each message and conver it to vector of number to speed up processing the results 
+ * 2- Text Normalization to remove unrelated words such as stop words 
+ * 3- Stemming to return a word to its root 
  */
 public class PrepareData {
 
