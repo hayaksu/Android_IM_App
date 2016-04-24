@@ -1,10 +1,13 @@
 package com.TextMining;
 
 /**
- * Created by Sakurmi on 10/29/2015.
+ * Created by Marwa Khan on 1/4/2016.
+ * Class Description: This class will stem each word to its root 
+ * Note: the utilized stemmer is based on Apache stemmer, but with view changes 
  */
 public class StemWord {
 
+    // variables Initilization 
     public static final char ALEF = '\u0627';
     public static final char BEH = '\u0628';
     public static final char TEH = '\u062A';
@@ -30,6 +33,7 @@ public class StemWord {
     };
 
 
+    // class constructer
     public static String Stem(String str)
     {
         String CurrentStr = "";
@@ -46,6 +50,9 @@ public class StemWord {
         return CurrentStr;
     }
 
+    //Method to stem a given word 
+    // Input: String 
+    // Output: String 
     private static String StemConnectedWords(String str)
     {
         String[] StrArray = str.split(" ");
@@ -58,14 +65,12 @@ public class StemWord {
 
             CurrentString += StrArray[index] + " ";
         }
-
-      //  System.out.println(CurrentString);
-
         CurrentString = CurrentString.substring(0, CurrentString.length() - 1);
 
         return CurrentString;
     }
 
+    // Method to remove prefix 
     private static String RemovePrefix(String word)
     {
         String modifiedWord = word;
@@ -76,20 +81,17 @@ public class StemWord {
             if (word.startsWith(prefixes[index]))
                 if (prefixes[index].equals(WAW)&& !(word.length() > 3) && !isDone) {
                     isDone = true;
-        //            System.out.println(prefixes[index]);
                     modifiedWord = word.substring(word.indexOf(prefixes[index]) + 1);
                 }
                 else if ((prefixes[index].length() + 2 < word.length()) ) {
                     isDone = true;
-          //          System.out.println(prefixes[index]);
                     modifiedWord = word.substring(word.indexOf(prefixes[index]) + prefixes[index].length());
                 }
         }
-
-
         return modifiedWord;
     }
 
+    // method to remove suffix
     private static String RemoveSuffix(String word)
     {
         String modifiedWord = word;
@@ -114,7 +116,6 @@ public class StemWord {
                 }
                 else if (suffixes[index].length() + 2 < word.length() && !isDone) {
 
-            //        System.out.println(suffixes[index] + ":" + word.lastIndexOf(suffixes[index]));
                     isDone = true;
                     modifiedWord = word.substring(0, word.lastIndexOf(suffixes[index]));
                 }
