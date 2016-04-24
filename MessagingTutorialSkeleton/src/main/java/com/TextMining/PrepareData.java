@@ -24,8 +24,7 @@ public class PrepareData {
     public static boolean HasURL;
     public static boolean IsURLphishing;
 
-
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////to read real time message ///////////////////////////
+    // This method will read a message and do text preprocessing tasks on it and then uplade it back to the server ass numbesr 
     public static String AddaConversation(String Message) {
 
         long start = System.currentTimeMillis();
@@ -50,34 +49,25 @@ public class PrepareData {
 
                     CurrentStr = ArrayMsg[wordIndex];
 
-                    //System.out.println(CurrentStr);
-
                     CurrentStr = WordNormalization.FilterWords(CurrentStr);
-                    //System.out.println("After Normalize:" + CurrentStr + "*");
 
                     if (!CurrentStr.equals(" ") && !CurrentStr.isEmpty()) {
                         CurrentStr = WordNormalization.RemoveWords(CurrentStr);
-                      // System.out.println("After Remove:" + CurrentStr);
 
                         if (!CurrentStr.isEmpty()) {
                             CurrentStr = StemWord.Stem(CurrentStr);
-                        //  System.out.println("After Stem:" + CurrentStr);
                             CurrentStr = CurrentStr.replaceAll("([\u0620-\u064A\u06C0-\u06CF])\\1+", "$1$1");
                         }
                     }
 
 
                     if (!CurrentStr.isEmpty() && !CurrentStr.equals(" ")) {
-                        //System.out.println("To Index:" + CurrentStr);
-
                         ArrayList<Integer> IndexWordsList = UploadSpecificMessageWords(CurrentStr);
                         IndexMsg += IndexWordsList.toString().replaceAll("[\\[\\],]", "") + " ";
                     }
                 }
 
                 if (!IndexMsg.isEmpty()) {
-                    //System.out.println("Indexed Msg:"+IndexMsg);
-
                     ParseObject parseIndexedWords = new ParseObject("TransDatabase");
                     parseIndexedWords.put("FilteredMsg", IndexMsg);
                     parseIndexedWords.saveInBackground();
@@ -114,6 +104,8 @@ public class PrepareData {
         return IndexMsg;
     }
 
+
+    //This method will check if the word index is already found in the server 
     private static ArrayList<Integer> UploadSpecificMessageWords(String str) {
 
         ArrayList<Integer> IndexedWord = new ArrayList<Integer>();
@@ -164,5 +156,4 @@ public class PrepareData {
         }
         return IndexedWord;
     }
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////to read real time message ///////////////////////////
 }
