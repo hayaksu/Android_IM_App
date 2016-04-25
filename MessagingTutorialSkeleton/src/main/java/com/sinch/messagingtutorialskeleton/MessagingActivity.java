@@ -279,7 +279,12 @@ System.out.println("message.getRecipientIds().get(0) "+message.getRecipientIds()
                         }
                     }
                 }// end first for
-            } catch (ParseException e) {
+            }
+            
+            
+                // alert message 
+                
+                   catch (ParseException e) {
 
                 AlertDialog alertDialog = new AlertDialog.Builder(MessagingActivity.this).create();
                 alertDialog.setTitle("تنبيه");
