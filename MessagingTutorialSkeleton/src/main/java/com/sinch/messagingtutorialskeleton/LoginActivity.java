@@ -32,7 +32,7 @@ public class LoginActivity extends Activity {
 
         intent = new Intent(getApplicationContext(), ListUsersActivity.class);
         serviceIntent = new Intent(getApplicationContext(), MessageService.class);
-
+           //if user != null
         ParseUser currentUser = ParseUser.getCurrentUser();
         if (currentUser != null) {
             startActivity(intent);
