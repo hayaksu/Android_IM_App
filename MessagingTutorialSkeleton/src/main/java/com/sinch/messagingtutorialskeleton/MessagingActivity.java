@@ -1,6 +1,24 @@
 package com.sinch.messagingtutorialskeleton;
 
         //Importing class
+        //app.Activity;
+        //app.AlertDialog;
+        //content.ComponentName;
+        //content.DialogInterface;
+        //content.Intent;
+        //content.ServiceConnection;
+        //os.Bundle;
+        //os.IBinder;
+        //android.view.View;
+         //android.widget.EditText;
+         //android.widget.ListView;
+         //android.widget.Toast;
+        
+        
+        
+        
+        
+        
         import android.app.Activity;
         import android.app.AlertDialog;
         import android.content.ComponentName;
