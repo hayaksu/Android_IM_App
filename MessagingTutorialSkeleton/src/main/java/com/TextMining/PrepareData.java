@@ -156,4 +156,82 @@ public class PrepareData {
         }
         return IndexedWord;
     }
+    
+    
+    //Method to read all training messages and fill the database with their results after indexing all of them 
+     public static void ReadAllConversations() {
+
+        try {
+            ParseQuery<ParseObject> query = ParseQuery.getQuery("ParseMessage");
+
+            List<ParseObject> Objectslist = query.find();
+
+            String CurrentMsg = "";
+            String CurrentStr = "";
+
+            String IndexMsg = "";
+
+            for (int index = 0; index < Objectslist.size(); ++index) {
+                CurrentMsg = Objectslist.get(index).getString("messageText");
+
+                CurrentMsg = CurrentMsg.replaceAll("\n", " ");
+                String[] ArrayMsg = CurrentMsg.split(" ");
+
+                IndexMsg = "";
+
+                for (int wordIndex = 0; wordIndex < ArrayMsg.length; ++wordIndex) {
+
+                    CurrentStr = ArrayMsg[wordIndex];
+
+                    //System.out.println(CurrentStr);
+
+                    CurrentStr = WordNormalization.FilterWords(CurrentStr);
+                    System.out.println("After Normalize:" + CurrentStr+"*");
+
+                    if (!CurrentStr.equals(" ") && !CurrentStr.isEmpty()) {
+                        CurrentStr = WordNormalization.RemoveWords(CurrentStr);
+                        //System.out.println("After Remove:" + CurrentStr);
+
+                        if (!CurrentStr.isEmpty()) {
+                            CurrentStr = StemWord.Stem(CurrentStr);
+                            //      System.out.println("After Stem:" + CurrentStr);
+
+                            if (!CurrentStr.isEmpty() && !CurrentStr.equals(" ") && CurrentStr.charAt(0) != CurrentStr.charAt(1)) {
+                                System.out.println("Before remove dup:" + CurrentStr);
+                                CurrentStr = CurrentStr.replaceAll("([\u0620-\u064A\u06C0-\u06CF])\\1+", "$1");
+                                System.out.println("After remove dup:" + CurrentStr);
+                            }
+
+                        }
+                    }
+                    if (!CurrentStr.isEmpty() && !CurrentStr.equals(" ")) {
+                        System.out.println("To Index:" + CurrentStr);
+
+                        ArrayList<Integer> IndexWordsList = UploadMessageWords(CurrentStr);
+
+                        for (int indexdStr : IndexWordsList) {
+                            IndexMsg += indexdStr + " ";
+                        }
+                    }
+                }
+
+                if (!IndexMsg.isEmpty()) {
+                    ParseObject parseIndexedWords = new ParseObject("TransDatabase");
+                    parseIndexedWords.put("FilteredMsg", IndexMsg);
+                    parseIndexedWords.saveInBackground();
+                }
+            }
+
+            ParseQuery<ParseObject> queryUpdate = ParseQuery.getQuery("LastWordIndex");
+            ParseObject parseIndex = queryUpdate.get("Cb3oM2RsGL");
+
+            parseIndex.put("LastIndex", Indexcounter);
+            parseIndex.saveInBackground();
+
+        } catch (Exception e) {
+        }
+    }
+    
+    
+    
 }
