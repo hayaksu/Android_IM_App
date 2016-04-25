@@ -87,7 +87,7 @@ public class MessageService extends Service implements SinchClientListener {
     public void onClientStopped(SinchClient client) {
         sinchClient = null;
     }
-
+// if sinchClient = null;
     @Override
     public IBinder onBind(Intent intent) {
         return serviceInterface;
