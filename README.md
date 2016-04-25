@@ -7,6 +7,8 @@ The tutorial will walk you through building an instant messaging app using Sinch
 We update the tutorial to include Arabic spam message detection.
 
  The application will alert the user for any upcoming spam message.
+ 
+-
 
 The detection process is based on Textmining approach:
 -
@@ -21,6 +23,7 @@ The detection process is based on Textmining approach:
 - Apriori Algorithm
 - Infer Association Rules and save in DB
 
+-
 
 **Requirements**
 
