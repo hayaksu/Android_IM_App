@@ -2,7 +2,11 @@
 
 This is an Android IM app project that follows this Tutorial - https://www.sinch.com/tutorials/android-messaging-tutorial-using-sinch-and-parse/
 
-The tutorial will walk you through building an instant messaging app using Sinch in less than two hours!
+The tutorial will walk you through building an instant messaging app using Sinch Android SDK and Parse cloud
+
+Set up developer accounts for Sinch(messaging SDK) and Parse(BaaS). For both Sinch and Parse, you will need to create an app in the developer portal. Hold on to the app keys and secrets that these services generate; you will need them in the application.
+
+-
 
 We update the tutorial to include Arabic spam message detection.
 
