@@ -109,7 +109,6 @@ public class ListUsersActivity extends Activity {
         });
     }
 
-    //show a loading spinner while the sinch client starts
     private void showSpinner() {
         progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Loading");
