@@ -1,8 +1,6 @@
 package com.sinch.messagingtutorialskeleton;
 
-/**
- * Created by Haya on 11/4/2015.
- */
+
 
 import android.util.Log;
 
