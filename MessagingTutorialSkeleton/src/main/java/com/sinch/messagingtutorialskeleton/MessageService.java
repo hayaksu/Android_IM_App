@@ -1,3 +1,6 @@
+//  Sinch service class, where you will start the Sinch client when a user logs in. 
+// Once started, the Sinch client will run in the background while the app is open
+// and will be used to send and receive messages
 package com.sinch.messagingtutorialskeleton;
 
 
