@@ -250,8 +250,9 @@ public class Apriori extends Observable {
                     {
                         int[] X = itemsets.get(i);
                         int[] Y = itemsets.get(j);
-
+                           //   int[] z = itemsets.get(j);
                         assert (X.length==Y.length);
+                          //   assert (X.length==Y.length==z.length);
 
                         //make a string of the first n-2 tokens of the strings
                         int [] newCand = new int[currentSizeOfItemsets+1];
