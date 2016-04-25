@@ -5,6 +5,7 @@ This is an Android IM app project that follows this Tutorial - https://www.sinch
 The tutorial will walk you through building an instant messaging app using Sinch in less than two hours!
 
 We update the tutorial to include Arabic spam message detection.
+The application will alert the user for any upcoming spam message.
 
 **Requirements**
 
