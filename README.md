@@ -5,7 +5,22 @@ This is an Android IM app project that follows this Tutorial - https://www.sinch
 The tutorial will walk you through building an instant messaging app using Sinch in less than two hours!
 
 We update the tutorial to include Arabic spam message detection.
-The application will alert the user for any upcoming spam message.
+
+ The application will alert the user for any upcoming spam message.
+
+The detection process is based on Textmining approach:
+-
+
+**Text Manipulation**
+- Collect real spam messages from IM
+- Remove ignore words
+- Normalize and stem
+- Index words saved on DB
+
+**Data Mining technique**
+- Apriori Algorithm
+- Infer Association Rules and save in DB
+
 
 **Requirements**
 
