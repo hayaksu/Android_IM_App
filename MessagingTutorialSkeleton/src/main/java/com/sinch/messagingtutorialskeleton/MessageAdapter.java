@@ -79,6 +79,7 @@ public class MessageAdapter extends BaseAdapter {
         }
 
         WritableMessage message = messages.get(i).first;
+// class message.getTextBody());
 
         TextView txtMessage = (TextView) convertView.findViewById(R.id.txtMessage);
         txtMessage.setText(message.getTextBody());
