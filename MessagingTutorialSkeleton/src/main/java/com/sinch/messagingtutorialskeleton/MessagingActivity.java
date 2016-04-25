@@ -1,5 +1,7 @@
 package com.sinch.messagingtutorialskeleton;
 
+        //Importing class
+        
         import android.app.Activity;
         import android.app.AlertDialog;
         import android.content.ComponentName;
@@ -34,6 +36,8 @@ package com.sinch.messagingtutorialskeleton;
         import java.util.regex.Matcher;
         import java.util.regex.Pattern;
 
+
+// puplic class
 public class MessagingActivity extends Activity {
 
     private String recipientId;
