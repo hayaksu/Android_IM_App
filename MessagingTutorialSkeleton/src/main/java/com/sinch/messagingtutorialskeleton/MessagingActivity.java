@@ -1,7 +1,6 @@
 package com.sinch.messagingtutorialskeleton;
 
         //Importing class
-        
         import android.app.Activity;
         import android.app.AlertDialog;
         import android.content.ComponentName;
@@ -142,66 +141,31 @@ public class MessagingActivity extends Activity {
         public void onIncomingMessage(MessageClient client, final Message message) {
             if (message.getSenderId().equals(recipientId)) {
 
-
-               // System.out.println("onIncomingMessage");
-                //System.out.println("message.getSenderId() "+message.getSenderId()+" recipientId "+recipientId);
-
                 final WritableMessage writableMessage = new WritableMessage(message.getRecipientIds().get(0), message.getTextBody());
                 messageAdapter.addMessage(writableMessage, MessageAdapter.DIRECTION_INCOMING);
-              //  System.out.println("after message adapter");
-
-//System.out.println("message.getRecipientIds().get(0) " + message.getRecipientIds().get(0));
-//System.out.println("recipientId "+recipientId);
-
-
-
 
                 String IndexedMessage = PrepareData.AddaConversation(writableMessage.getTextBody());
-             //  boolean result = CheckMessageForSpam(IndexedMessage);
 
                 if(CheckMessageForSpam(IndexedMessage)) {
-                    //    Toast.makeText(MessagingActivity.this, "WARNNING", Toast.LENGTH_LONG).show();
-                    //  else
-                    //    Toast.makeText(MessagingActivity.this, "else", Toast.LENGTH_LONG).show();
-
+       
                     AlertDialog alertDialog = new AlertDialog.Builder(MessagingActivity.this).create();
                     alertDialog.setTitle("تنبيه");
                     alertDialog.setMessage("هذه الرسالة مشبوهه، يرجى الحذر من الأرقام والروابط.");
+        
                     alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "موافق",
+        
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
                                     dialog.dismiss();
                                 }
                             });
+        
                     alertDialog.show();
-                     // Run the algorithm
-                 //   MyApplication.runAprioriAlgorithm();
 
                 }//end if
 
 
 
-
-                //only add message to parse database if it doesn't already exist there
-               /* ParseQuery<ParseObject> query = ParseQuery.getQuery("ParseMessage");
-                query.whereEqualTo("sinchId", message.getMessageId());
-                query.findInBackground(new FindCallback<ParseObject>() {
-                    @Override
-                    public void done(List<ParseObject> messageList, com.parse.ParseException e) {
-                        if (e == null) {
-                            if (messageList.size() == 0) {
-                                ParseObject parseMessage = new ParseObject("ParseMessage");
-                                parseMessage.put("senderId", currentUserId);
-                                parseMessage.put("recipientId", writableMessage.getRecipientIds().get(0));
-                                parseMessage.put("messageText", writableMessage.getTextBody());
-                                parseMessage.put("sinchId", message.getMessageId());
-                                parseMessage.saveInBackground();
-
-                                messageAdapter.addMessage(writableMessage, MessageAdapter.DIRECTION_INCOMING);
-                            }
-                        }
-                    }
-                });*/
             }
         }
 
@@ -212,9 +176,8 @@ System.out.println("onMessageSent");
 System.out.println("message.getRecipientIds().get(0) "+message.getRecipientIds().get(0));
 
             final WritableMessage writableMessage = new WritableMessage(message.getRecipientIds().get(0), message.getTextBody());
-           // messageAdapter.addMessage(writableMessage, MessageAdapter.DIRECTION_OUTGOING);
 
-//Modified by haya
+            //Modified by haya
             //only add message to parse database if it doesn't already exist there
             ParseQuery<ParseObject> query = ParseQuery.getQuery("ParseMessage");
             query.whereEqualTo("sinchId", message.getMessageId());
@@ -252,17 +215,17 @@ System.out.println("message.getRecipientIds().get(0) "+message.getRecipientIds()
 
                     for (int index = 0; index < PhishingPatterns.size(); index++) {
                         String[] currentPattern = PhishingPatterns.get(index).replace("[", "").replace("]", "").split(", ");
-                      //  System.out.println("Index First For: " + index +" Pattern: "+ Arrays.toString(currentPattern)+" str: "+ str);
+
                         Pattern p;
                         Matcher m;
                         for (int wordIndex = 0; wordIndex < currentPattern.length; wordIndex++) {
+                            
                             // just try to find a match
                             p = Pattern.compile("(\\s*(\\b" + currentPattern[wordIndex] + ")\\s*)");
                             m = p.matcher(str);
-                          //  System.out.println("Index second For: " + wordIndex +" current Pattern: "+ currentPattern[wordIndex]);
+
                             if (!m.find()) {
-                           // if  not found, exit the inner loop and take the next pattern in the outer loop
-                            // System.out.println("Inside 1 break ");
+                               // if not found, exit the inner loop and take the next pattern in the outer loop
                                 break;
                             }
                             if (wordIndex == (currentPattern.length - 1)) {
@@ -297,9 +260,7 @@ System.out.println("message.getRecipientIds().get(0) "+message.getRecipientIds()
                         });
                 alertDialog.show();
             }
-
-         //   System.out.println("Result: "+FoundPhishingPattern);
-
+            
             return FoundPhishingPattern;
         }//end method
         @Override
