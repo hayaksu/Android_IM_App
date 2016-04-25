@@ -90,6 +90,7 @@ public class ListUsersActivity extends Activity {
     }
 
     //open a conversation with one person
+    // MessagingActivity, and start it from ListUsersActivity when a user clicks on another user's name
     public void openConversation(ArrayList<String> names, int pos) {
         ParseQuery<ParseUser> query = ParseUser.getQuery();
         query.whereEqualTo("username", names.get(pos));
