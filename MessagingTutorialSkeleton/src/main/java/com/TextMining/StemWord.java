@@ -2,8 +2,10 @@ package com.TextMining;
 
 /**
  * Created by Marwa Khan on 1/4/2016.
- * Class Description: This class will stem each word to its root 
- * Note: the utilized stemmer is based on Apache stemmer, but with view changes 
+ * Class Description: 
+ * This class will stem each word to its root 
+ * Note:
+ * the utilized stemmer is based on Apache stemmer, but with view changes 
  */
 public class StemWord {
 
