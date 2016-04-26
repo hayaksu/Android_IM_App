@@ -234,6 +234,78 @@ public class PrepareData {
         }
     }
     
-    
+        private static ArrayList<Integer> UploadMessageWords(String str) {
+
+        ArrayList<Integer> IndexedWord = new ArrayList<Integer>();
+
+        String[] strList = str.split(" ");
+
+
+        int CurrentIndex = 0;
+
+        ParseObject parseWords = new ParseObject("IndexedWordsDB");
+
+
+        for (String word : strList) {
+
+            ParseQuery<ParseObject> query = ParseQuery.getQuery("IndexedWordsDB");
+
+            query.whereEqualTo("Word", word);
+
+            try {
+                List<ParseObject> OutputList = query.find();
+
+                if (word.length() > 1) {
+                    if (OutputList.size() == 0) {
+
+                        CurrentIndex = ++Indexcounter;
+
+                        parseWords.put("Word", word);
+                        parseWords.put("Index", Indexcounter);
+
+                        parseWords.saveInBackground();
+                    } else {
+                        CurrentIndex = OutputList.get(0).getInt("Index");
+                    }
+
+                    IndexedWord.add(CurrentIndex);
+                }
+
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return IndexedWord;
+    }
+
+    public static void UploadIgnoreWords(InputStream instr) {
+        try {
+            System.out.println("Inside prepare");
+
+            InputStreamReader inputreader = new InputStreamReader(instr);
+            BufferedReader buf = new BufferedReader(inputreader);
+
+            String str = "";
+
+            while (buf.ready()) {
+                str = buf.readLine();
+
+                ParseObject parseMessage = new ParseObject("IgnoreWordsDatabase");
+                parseMessage.put("StopWord", str);
+                parseMessage.saveInBackground();
+            }
+
+            buf.close();
+
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+    }
     
 }
