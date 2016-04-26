@@ -118,7 +118,7 @@ public class Apriori extends Observable {
                 {
 
                     calculateFrequentItemsets(args);
-
+                       // itemsets.size()!=0
                     if(itemsets.size()!=0)
                     {
                         nbFrequentSets+=itemsets.size();
