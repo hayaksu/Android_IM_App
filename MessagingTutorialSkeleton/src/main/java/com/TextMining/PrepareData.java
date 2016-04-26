@@ -24,7 +24,8 @@ public class PrepareData {
     public static boolean HasURL;
     public static boolean IsURLphishing;
 
-    // This method will read a message and do text preprocessing tasks on it and then uplade it back to the server ass numbesr 
+    // This method will read a message and do text preprocessing tasks on it  
+    // then uplade it back to the server ass numbesr
     public static String AddaConversation(String Message) {
 
         long start = System.currentTimeMillis();
@@ -66,7 +67,8 @@ public class PrepareData {
                         IndexMsg += IndexWordsList.toString().replaceAll("[\\[\\],]", "") + " ";
                     }
                 }
-
+                  //FilteredMsg
+                  //TransDatabase
                 if (!IndexMsg.isEmpty()) {
                     ParseObject parseIndexedWords = new ParseObject("TransDatabase");
                     parseIndexedWords.put("FilteredMsg", IndexMsg);
