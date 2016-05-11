@@ -12,4 +12,5 @@ We have updated the tutorial to include Arabic spam message detection.
 
  The application will alert the user for any upcoming spam message.
  
+ 
 
